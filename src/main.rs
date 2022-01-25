@@ -1,8 +1,13 @@
 #[macro_use] extern crate rocket;
 
-#[get("/patientData/<name>")]
+#[get("/patientData/treatment/<name>")]
 fn patient_data(name: &str) -> String {
-    format!("retrieving patient data for {}", name) 
+    let treatment = get_patient_data(name);
+    format!("Treatment is {} ", treatment) 
+}
+
+fn get_patient_data(name: &str) -> String {
+    format!("Ergo Therapy for {}, probably", name)
 }
 
 #[get("/")]
